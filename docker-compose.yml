@@ -4,7 +4,7 @@ services:
   app:
     build:
       args:
-        user: sammy
+        user: OSCAR
         uid: 1000
       context: ./
       dockerfile: Dockerfile
@@ -19,6 +19,8 @@ services:
 
   db:
     image: mysql:5.7
+    ports:
+    - "3306:3306"
     container_name: carrot-db
     restart: unless-stopped
     environment:
@@ -26,6 +28,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_USER: ${DB_USERNAME}
+      MYSQL_ROOT_HOST: '%'
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
