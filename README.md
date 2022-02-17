@@ -33,6 +33,17 @@ Su entorno ahora estárá configurado y en funcionamiento, pero aún debemos eje
   docker-compose exec app composer install
 ```
 
+```bash
+  docker-compose exec app npm install
+```
+si tienes npm local
+npm run dev
+
+```bash
+  docker-compose exec app php artisan migrate
+```
+todas las migraciones llevan el comando docker-compose exec app
+
 Lo último que debemos hacer antes de probar la aplicación es generar una clave de aplicación única con la herramienta de línea de comandos de Laravel artisan. Esta clave se utiliza para cifrar las sesiones de los usuarios y otros datos confidenciales:
 ```bash
   docker-compose exec app php artisan key:generate
